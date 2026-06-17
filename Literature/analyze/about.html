@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>About — Humanoid Robot Imaginaries</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --bg:           #f7f8fa;
+    --panel-bg:     #ffffff;
+    --border:       #e5e7eb;
+    --text:         #1f2937;
+    --text-mid:     #4a5568;
+    --text-light:   #7f8c8d;
+    --accent:       #2563eb;
+    --utopian:      #27ae60;
+    --dystopian:    #c0392b;
+    --mixed:        #e67e22;
+    --neutral:      #7f8c8d;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  /* nav — same as interactive.html */
+  .site-nav {
+    display: flex; align-items: center; gap: 6px;
+    padding: 0 20px; height: 40px;
+    background: #0f172a; color: #fff; font-size: 13px;
+  }
+  .site-nav a {
+    color: rgba(255,255,255,.7); text-decoration: none; padding: 4px 10px;
+    border-radius: 4px; transition: .15s;
+  }
+  .site-nav a:hover, .site-nav a.active { color: #fff; background: rgba(255,255,255,.12); }
+  .site-nav .brand { font-weight: 700; color: #fff; margin-right: 12px; letter-spacing: .3px; }
+  .site-nav .brand span { color: #60a5fa; }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 8px;
+    color: var(--text);
+  }
+  .subtitle {
+    color: var(--text-mid);
+    font-size: 15px;
+    margin-bottom: 36px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    margin: 40px 0 12px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    color: var(--text);
+  }
+  h2:first-of-type { border-top: none; padding-top: 0; }
+
+  h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 8px;
+    color: var(--text);
+  }
+
+  p { margin: 0 0 14px; }
+
+  ul, ol { margin: 0 0 14px; padding-left: 24px; }
+  li { margin-bottom: 6px; }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin: 20px 0 28px;
+  }
+  .stat-card {
+    background: var(--panel-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .stat-card .num {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--accent);
+    display: block;
+  }
+  .stat-card .label {
+    font-size: 12px;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 13.5px;
+  }
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    background: #f1f5f9;
+    font-weight: 600;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    color: var(--text-mid);
+  }
+  td code {
+    background: #f1f5f9;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+
+  .valence-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  .valence-dot.utopian  { background: var(--utopian); }
+  .valence-dot.dystopian { background: var(--dystopian); }
+  .valence-dot.mixed    { background: var(--mixed); }
+  .valence-dot.neutral  { background: var(--neutral); }
+
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+  .badge.hp { background: #fbe9e7; color: #c0392b; }
+  .badge.mp { background: #fff7d6; color: #b07a00; }
+  .badge.lp { background: #e7f5ec; color: #2e7d32; }
+
+  .note {
+    background: #fffbeb;
+    border: 1px solid #fbbf24;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 13px;
+    color: #92400e;
+    margin: 16px 0;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 24px;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .back-link:hover { text-decoration: underline; }
+
+  @media (max-width: 600px) {
+    .container { padding: 20px 16px 60px; }
+    h1 { font-size: 22px; }
+    .stat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="../../index.html" class="brand">AI <span>Co-Evolution</span></a>
+  <a href="../../index.html">Home</a>
+  <a href="interactive.html">Sci-Fi Networks</a>
+  <a href="about.html" class="active">About</a>
+  <a href="../../Grants/grants_patents_explorer.html">Grants & Patents</a>
+</nav>
+
+<div class="container">
+
+<h1>About This Explorer</h1>
+<p class="subtitle">Methodology, data model, and codebook for the Humanoid Robot Imaginaries co-mention network.</p>
+
+<!-- WHY -->
+<h2>Why</h2>
+<p>
+  This interactive explorer accompanies a research project investigating how science-fiction humanoids shape — and are shaped by — real-world technology, policy, and public discourse. The central research question is:
+</p>
+<blockquote style="border-left:3px solid var(--accent); padding-left:16px; margin:16px 0; color:var(--text-mid); font-style:italic;">
+  Which fictional humanoids become canonical reference points in STS and humanities discussions of technology and society?
+</blockquote>
+<p>
+  By constructing a co-mention network from a curated academic corpus, we can visualize which fictional characters and works recur across scholarship, how they cluster thematically, and which ones have become anchor points — canonical reference figures cited across many independent publications.
+</p>
+
+<!-- HOW -->
+<h2>How</h2>
+
+<h3>Corpus construction</h3>
+<p>
+  The literature corpus (Version 2.0) was built through a multi-stage process:
+</p>
+<ol>
+  <li><strong>Initial search</strong> — keyword and topic-based searches across Google Scholar, Scopus, and institutional databases for STS, humanities, and social-science scholarship that mobilizes science-fiction humanoids, robots, androids, cyborgs, or AI characters in discussions of technology, society, ethics, governance, innovation, and futures.</li>
+  <li><strong>Web of Science expansion</strong> — three systematic WoS queries (369 records screened) with LLM-aided metadata screening and full-text PDF reading. 46 new papers added: 10 from query 1, 8 from query 2, 28 from query 3.</li>
+  <li><strong>Backward citation</strong> — reference-list mining from included papers, particularly to identify foundational STS frameworks (e.g., Borup et al. 2006 on expectations, Jasanoff & Kim 2015 on imaginaries, Callon 1986 on ANT).</li>
+  <li><strong>Screening</strong> — title/abstract review against inclusion criteria. Papers must engage with fictional humanoid/robot/AI characters in a technology-and-society framing; pure literary criticism, pure engineering, and non-English works (unless highly cited) are excluded.</li>
+  <li><strong>Character and work extraction</strong> — each paper is read to identify all fictional characters and works mentioned, along with their narrative valence and thematic motifs.</li>
+</ol>
+<p>
+  Each paper's discovery method is tracked in a <code>discovery_source</code> field for methodological transparency.
+</p>
+
+<h3>Network construction</h3>
+<p>
+  Two networks are built from the extracted data:
+</p>
+<ul>
+  <li><strong>Character co-mention network</strong> — two characters are connected if they appear in the same paper. Edge weight = number of shared papers.</li>
+  <li><strong>Work co-mention network</strong> — two works are connected if they appear in the same paper. Edge weight = number of shared papers.</li>
+</ul>
+<p>
+  The networks are rendered using <a href="https://visjs.github.io/vis-network/" target="_blank" rel="noopener">vis.js</a> with a Barnes-Hut force-directed layout. Node size is proportional to mention count (number of papers). Node color reflects valence.
+</p>
+
+<!-- CORPUS STATS -->
+<h2>Corpus at a Glance (v2.0)</h2>
+
+<div class="stat-grid">
+  <div class="stat-card"><span class="num">110</span><span class="label">Papers</span></div>
+  <div class="stat-card"><span class="num">418</span><span class="label">Characters</span></div>
+  <div class="stat-card"><span class="num">254</span><span class="label">Works</span></div>
+  <div class="stat-card"><span class="num">35</span><span class="label">Anchor characters</span></div>
+  <div class="stat-card"><span class="num">4,747</span><span class="label">Character edges</span></div>
+  <div class="stat-card"><span class="num">4,149</span><span class="label">Work edges</span></div>
+</div>
+
+<p><strong>Papers by priority:</strong>
+  <span class="badge hp">67 high</span>
+  <span class="badge mp">35 medium</span>
+  <span class="badge lp">8 low</span>
+</p>
+
+<p><strong>Character valence:</strong>
+  <span class="valence-dot utopian"></span>26 utopian,
+  <span class="valence-dot dystopian"></span>127 dystopian,
+  <span class="valence-dot mixed"></span>20 mixed,
+  <span class="valence-dot neutral"></span>245 neutral.
+</p>
+
+<!-- NODES AND EDGES -->
+<h2>Nodes and Edges</h2>
+
+<h3>What is a node?</h3>
+<p>
+  Each node represents either a <strong>fictional character</strong> (e.g., HAL 9000, The Terminator, Astro Boy) or a <strong>fictional work</strong> (e.g., <em>Blade Runner</em>, <em>2001: A Space Odyssey</em>), depending on which view is active.
+</p>
+<table>
+  <tr><th>Property</th><th>Encoding</th><th>Meaning</th></tr>
+  <tr>
+    <td><strong>Size</strong></td>
+    <td>Proportional to count</td>
+    <td>Number of papers in the corpus that mention this character/work. Larger nodes appear in more publications.</td>
+  </tr>
+  <tr>
+    <td><strong>Color</strong></td>
+    <td><span class="valence-dot utopian"></span>Green / <span class="valence-dot dystopian"></span>Red / <span class="valence-dot mixed"></span>Orange / <span class="valence-dot neutral"></span>Gray</td>
+    <td>Overall valence of the character: utopian (hopeful, emancipatory), dystopian (threatening, controlling), mixed (both), or neutral (not clearly coded).</td>
+  </tr>
+</table>
+
+<h3>What is an edge?</h3>
+<p>
+  An edge connects two nodes that <strong>co-occur in the same paper</strong>. If Paper X mentions both HAL 9000 and The Terminator, an edge links them. Edge weight (thickness) equals the number of papers in which both entities appear together.
+</p>
+<p>
+  High-weight edges reveal which characters or works are frequently discussed together in scholarship — indicating thematic clusters, comparative analysis patterns, or canonical groupings.
+</p>
+
+<h3>Anchor characters</h3>
+<p>
+  Characters appearing in <strong>5 or more papers</strong> are designated "anchor characters" — canonical reference points that have become recurring touchstones across the corpus. The current 35 anchor characters include:
+</p>
+<table>
+  <tr><th>Character</th><th>Papers</th><th>Valence</th></tr>
+  <tr><td>HAL 9000</td><td>29</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>The Terminator</td><td>28</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>R2-D2</td><td>21</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>Lt. Cmdr Data (Star Trek)</td><td>20</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>Ava (Ex Machina)</td><td>19</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Frankenstein's creature</td><td>19</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>WALL-E</td><td>18</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>David (A.I.)</td><td>17</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>Maria / Maschinenmensch (Metropolis)</td><td>16</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>Sonny (I, Robot)</td><td>15</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Roy Batty (Blade Runner)</td><td>13</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>C-3PO</td><td>12</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>Skynet</td><td>11</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Astro Boy / Tetsuwan Atom</td><td>10</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>Rachael (Blade Runner)</td><td>9</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>Samantha (Her)</td><td>9</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Agent Smith (Matrix)</td><td>8</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Replicants (Blade Runner)</td><td>8</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Ash (Alien)</td><td>7</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>Chappie</td><td>7</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Robby the Robot (Forbidden Planet)</td><td>7</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>The Golem</td><td>7</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>Baymax (Big Hero 6)</td><td>6</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Dolores Abernathy (Westworld)</td><td>6</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Optimus Prime (Transformers)</td><td>6</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Rossum's Robots (R.U.R.)</td><td>6</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Sophia (Hanson Robotics, real)</td><td>6</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Andrew (Bicentennial Man)</td><td>5</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Maeve Millay (Westworld)</td><td>5</td><td><span class="valence-dot dystopian"></span>dystopian</td></tr>
+  <tr><td>Pepper (Softbank, real)</td><td>5</td><td><span class="valence-dot mixed"></span>mixed</td></tr>
+  <tr><td>Rick Deckard (Blade Runner)</td><td>5</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+  <tr><td>RoboCop / Murphy</td><td>5</td><td><span class="valence-dot neutral"></span>neutral</td></tr>
+</table>
+
+<!-- METADATA SIDEBAR CODEBOOK -->
+<h2>Metadata Sidebar Codebook</h2>
+<p>
+  When you click a node in the network, the right panel displays detailed metadata. Here is what each section contains:
+</p>
+
+<h3>1. Valence badge</h3>
+<table>
+  <tr><th>Badge</th><th>Meaning</th></tr>
+  <tr><td><span class="valence-dot utopian"></span><strong>utopian</strong></td><td>Character is predominantly portrayed as beneficial, helpful, emancipatory, or hopeful in the literature.</td></tr>
+  <tr><td><span class="valence-dot dystopian"></span><strong>dystopian</strong></td><td>Character is predominantly portrayed as threatening, controlling, dehumanizing, or destructive.</td></tr>
+  <tr><td><span class="valence-dot mixed"></span><strong>mixed</strong></td><td>Character is discussed with both utopian and dystopian framings across papers.</td></tr>
+  <tr><td><span class="valence-dot neutral"></span><strong>neutral</strong></td><td>Character's portrayal is not clearly utopian or dystopian, or is insufficiently characterized in the corpus.</td></tr>
+</table>
+
+<h3>2. Wikipedia / Wikidata</h3>
+<p>
+  Automatically enriched metadata from Wikipedia and Wikidata for each character, including:
+</p>
+<ul>
+  <li><strong>Thumbnail</strong> — representative image from Wikipedia</li>
+  <li><strong>Description</strong> — Wikidata short description</li>
+  <li><strong>Extract</strong> — opening paragraph of the Wikipedia article</li>
+  <li><strong>Structured fields</strong> — type (film, character, novel), creator, director, series, genre, publication date, country of origin, awards, and other Wikidata properties</li>
+</ul>
+
+<h3>3. Research attributes</h3>
+<p>
+  Attributes extracted from Wikipedia text to support structured analysis:
+</p>
+<table>
+  <tr><th>Attribute</th><th>Description</th><th>Examples</th></tr>
+  <tr><td><code>entity_type</code></td><td>What kind of entity the character is</td><td>AI, robot, android, cyborg, hologram</td></tr>
+  <tr><td><code>material</code></td><td>Physical composition or material</td><td>metal, organic-synthetic hybrid</td></tr>
+  <tr><td><code>embodiment</code></td><td>Physical form</td><td>humanoid, non-humanoid, disembodied</td></tr>
+  <tr><td><code>capabilities</code></td><td>Functional abilities</td><td>speech, combat, emotion simulation, flight</td></tr>
+  <tr><td><code>narrative_role</code></td><td>Role in the story</td><td>protagonist, antagonist, companion, soldier</td></tr>
+  <tr><td><code>consciousness</code></td><td>Level of mind or sentience</td><td>sentient, self-aware, programmed</td></tr>
+  <tr><td><code>gender_presentation</code></td><td>How gender is presented</td><td>male, female, non-binary, none</td></tr>
+  <tr><td><code>appears_in</code></td><td>Works in which the character appears</td><td>film titles, novel titles, TV series</td></tr>
+</table>
+
+<h3>4. Topic motifs</h3>
+<p>
+  Binary tags indicating which thematic motifs the character is associated with in the literature. Motifs are color-coded by their valence alignment:
+</p>
+<table>
+  <tr><th>Motif</th><th>Valence</th><th>Description</th></tr>
+  <tr><td>utopian</td><td><span class="valence-dot utopian"></span>utopian</td><td>Character associated with hopeful, emancipatory, or beneficial technology narratives</td></tr>
+  <tr><td>dystopian</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Character associated with threatening, controlling, or destructive technology narratives</td></tr>
+  <tr><td>uprising</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Robot/AI rebellion or revolution against humans</td></tr>
+  <tr><td>companion</td><td><span class="valence-dot utopian"></span>utopian</td><td>Robot/AI as friend, helper, or emotional partner</td></tr>
+  <tr><td>threat</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Robot/AI as existential or physical threat</td></tr>
+  <tr><td>labor</td><td><span class="valence-dot neutral"></span>neutral</td><td>Robot/AI in context of work, automation, or economic displacement</td></tr>
+  <tr><td>sex / gender</td><td><span class="valence-dot neutral"></span>neutral</td><td>Character's gender, sexuality, or gendered design as a theme</td></tr>
+  <tr><td>uncanny</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Uncanny valley, eeriness, or discomfort with human-likeness</td></tr>
+  <tr><td>singularity</td><td><span class="valence-dot neutral"></span>neutral</td><td>Technological singularity, superintelligence, or transcendence</td></tr>
+  <tr><td>surveillance</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Monitoring, control, privacy invasion</td></tr>
+  <tr><td>cognition</td><td><span class="valence-dot neutral"></span>neutral</td><td>Consciousness, thinking, self-awareness as theme</td></tr>
+  <tr><td>maker anxiety</td><td><span class="valence-dot dystopian"></span>dystopian</td><td>Creator's fear of or ambivalence toward their creation</td></tr>
+</table>
+
+<h3>5. Robot features</h3>
+<p>
+  Four binary indicators for structural characteristics:
+</p>
+<table>
+  <tr><th>Feature</th><th>Description</th></tr>
+  <tr><td><strong>Humanoid body</strong></td><td>Character has a human-like physical form</td></tr>
+  <tr><td><strong>Mind / sentience</strong></td><td>Character exhibits consciousness, self-awareness, or autonomous thought</td></tr>
+  <tr><td><strong>Real-world counterpart</strong></td><td>A real robot or AI system has been explicitly modeled on or compared to this character</td></tr>
+  <tr><td><strong>Inspired real R&D</strong></td><td>The character has demonstrably inspired real research or engineering efforts</td></tr>
+</table>
+
+<h3>6. Papers</h3>
+<p>
+  All papers in the corpus that mention this character/work, sorted by priority then year. Each card shows:
+</p>
+<ul>
+  <li><strong>Citation key</strong> — e.g., <code>OsawaEtAl2022</code></li>
+  <li><strong>Priority badge</strong> — <span class="badge hp">hp</span> <span class="badge mp">mp</span> <span class="badge lp">lp</span></li>
+  <li><strong>Year and authors</strong></li>
+  <li><strong>Title</strong></li>
+  <li><strong>Excerpt</strong> — the passage or context in which the character/work is mentioned</li>
+  <li><strong>Flags</strong> — "desire" (character linked to desire/aspiration attributes) or "invention" (character linked to real-world invention/R&D)</li>
+</ul>
+
+<!-- EXCEL CODEBOOK -->
+<h2>Excel Codebook Reference</h2>
+<p>
+  The underlying data lives in <code>literature_corpus_v2.xlsx</code> with four sheets:
+</p>
+<ul>
+  <li><strong>Literature</strong> — 110 papers with 22 columns (metadata, priority evaluations, character statistics, provenance)</li>
+  <li><strong>WoS Search</strong> — documents the three Web of Science queries, filters, and LLM-aided selection protocol</li>
+  <li><strong>Codebook</strong> — column-level documentation: name, data type, description, allowed values, and evaluation prompt for each field</li>
+  <li><strong>Old Research Questions</strong> — the original 5-RQ framework (RQ1: impact types, RQ2: media/channels, RQ3: timelines/cycles, RQ4: ANT actors, RQ5: promising works) and the current research question</li>
+</ul>
+
+<div class="note">
+  <strong>Corpus Version 2.0</strong> — Expanded from the v1 frozen corpus (64 papers) via three Web of Science systematic searches (369 WoS records screened), with LLM-aided metadata screening and full-text PDF reading. 46 new papers added: 10 from WoS query 1, 8 from WoS query 2, 28 from WoS query 3. The character/work co-mention networks have been fully rebuilt for all 110 papers (418 characters, 254 works, 35 anchor characters).
+</div>
+
+<a class="back-link" href="interactive.html">&larr; Back to the network explorer</a>
+
+</div>
+</body>
+</html>

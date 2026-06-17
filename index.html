@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>AI Co-Evolution — Research Explorer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+  :root {
+    --bg:        #0f172a;
+    --card-bg:   #1e293b;
+    --border:    #334155;
+    --text:      #f1f5f9;
+    --text-mid:  #94a3b8;
+    --accent:    #3b82f6;
+    --grant:     #0d9488;
+    --patent:    #7c3aed;
+    --lit:       #f59e0b;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: var(--text); background: var(--bg);
+    display: flex; flex-direction: column;
+  }
+
+  /* --- Nav --- */
+  .site-nav {
+    background: #0b1120; border-bottom: 1px solid var(--border);
+    padding: 0 32px; display: flex; align-items: center; height: 52px;
+    gap: 24px;
+  }
+  .site-nav .brand {
+    font-weight: 800; font-size: 15px; color: var(--text);
+    text-decoration: none; letter-spacing: -.3px;
+  }
+  .site-nav .brand span { color: var(--accent); }
+  .site-nav a {
+    color: var(--text-mid); text-decoration: none; font-size: 13px;
+    font-weight: 600; padding: 6px 0; border-bottom: 2px solid transparent;
+    transition: all .15s;
+  }
+  .site-nav a:hover { color: var(--text); }
+  .site-nav a.active { color: var(--text); border-bottom-color: var(--accent); }
+
+  /* --- Hero --- */
+  .hero {
+    flex: 0 0 auto; text-align: center; padding: 80px 32px 50px;
+  }
+  .hero h1 {
+    font-size: 38px; font-weight: 800; margin: 0;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6, #0d9488);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .sub {
+    color: var(--text-mid); font-size: 16px; margin-top: 10px;
+    max-width: 600px; margin-left: auto; margin-right: auto; line-height: 1.5;
+  }
+
+  /* --- Cards grid --- */
+  .cards {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 20px; padding: 0 32px 60px;
+    max-width: 1100px; margin: 0 auto; width: 100%;
+  }
+  .card {
+    background: var(--card-bg); border: 1px solid var(--border);
+    border-radius: 14px; padding: 28px; text-decoration: none;
+    color: var(--text); transition: all .2s; position: relative;
+    overflow: hidden;
+  }
+  .card:hover {
+    border-color: var(--accent); transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(0,0,0,.3);
+  }
+  .card .icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; margin-bottom: 16px;
+  }
+  .card .icon.lit    { background: rgba(245,158,11,.15); }
+  .card .icon.grant  { background: rgba(13,148,136,.15); }
+  .card .icon.patent { background: rgba(124,58,237,.15); }
+  .card h2 { margin: 0 0 8px; font-size: 19px; font-weight: 700; }
+  .card .desc { color: var(--text-mid); font-size: 13.5px; line-height: 1.55; margin-bottom: 16px; }
+  .card .stats {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .card .stat {
+    font-size: 12px; color: var(--text-mid);
+  }
+  .card .stat b { color: var(--text); font-size: 16px; display: block; }
+  .card .arrow {
+    position: absolute; right: 24px; top: 28px;
+    font-size: 20px; color: var(--text-mid); transition: all .2s;
+  }
+  .card:hover .arrow { color: var(--accent); transform: translateX(4px); }
+
+  /* --- Footer --- */
+  .footer {
+    margin-top: auto; text-align: center; padding: 24px;
+    color: var(--text-mid); font-size: 12px; border-top: 1px solid var(--border);
+  }
+  .footer a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<nav class="site-nav">
+  <a href="index.html" class="brand">AI <span>Co-Evolution</span></a>
+  <a href="index.html" class="active">Home</a>
+  <a href="Literature/analyze/interactive.html">Sci-Fi Networks</a>
+  <a href="Literature/analyze/about.html">About</a>
+  <a href="Grants/grants_patents_explorer.html">Grants & Patents</a>
+</nav>
+
+<div class="hero">
+  <h1>AI Co-Evolution Explorer <span style="font-size:16px;opacity:.6;font-weight:400">v2</span></h1>
+  <div class="sub">
+    Exploring the interplay between science fiction imaginaries, research funding,
+    and technological innovation in humanoid robotics.
+  </div>
+</div>
+
+<div class="cards">
+
+  <a class="card" href="Literature/analyze/interactive.html">
+    <div class="icon lit">&#127902;</div>
+    <span class="arrow">&#8594;</span>
+    <h2>Sci-Fi Character & Work Networks</h2>
+    <div class="desc">
+      Interactive co-mention networks of humanoid robot characters and works
+      across 110 research papers. Click any node to explore Wikipedia metadata,
+      research attributes, motifs, and paper excerpts.
+    </div>
+    <div class="stats">
+      <div class="stat"><b>418</b> characters</div>
+      <div class="stat"><b>254</b> works</div>
+      <div class="stat"><b>110</b> papers</div>
+      <div class="stat"><b>96</b> with research attrs</div>
+    </div>
+  </a>
+
+  <a class="card" href="Grants/grants_patents_explorer.html">
+    <div class="icon grant">&#128176;</div>
+    <span class="arrow">&#8594;</span>
+    <h2>NSF Grants Explorer</h2>
+    <div class="desc">
+      Searchable database of NSF robotics research awards spanning 1982&ndash;2026.
+      Filter by year, directorate, topic, state. View funding trends over time
+      and drill into any grant's full abstract and metadata.
+    </div>
+    <div class="stats">
+      <div class="stat"><b>2,683</b> grants</div>
+      <div class="stat"><b>$1.12B</b> total funding</div>
+      <div class="stat"><b>503</b> organizations</div>
+    </div>
+  </a>
+
+  <a class="card" href="Grants/grants_patents_explorer.html" onclick="localStorage.setItem('startTab','patents')">
+    <div class="icon patent">&#128161;</div>
+    <span class="arrow">&#8594;</span>
+    <h2>Robotics Patents Explorer</h2>
+    <div class="desc">
+      Browse 6,324 US robotics patents (USPC class 901) from 1984&ndash;2015.
+      Filter by subclass category, search by title and abstract,
+      and explore temporal trends in patent filings.
+    </div>
+    <div class="stats">
+      <div class="stat"><b>6,324</b> patents</div>
+      <div class="stat"><b>49</b> subclasses</div>
+      <div class="stat"><b>1984&ndash;2015</b> span</div>
+    </div>
+  </a>
+
+</div>
+
+<div class="footer">
+  AI Co-Evolution Research Project &mdash; Indiana University Bloomington
+</div>
+
+</body>
+</html>
