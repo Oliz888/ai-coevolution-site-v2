@@ -235,7 +235,7 @@
       <li><strong>PDF acquisition</strong> — open-access PDFs downloaded automatically where available; remaining papers downloaded manually via institutional access.</li>
       <li><strong>Full-text extraction</strong> — each PDF scanned for character and work mentions using 60+ character patterns and 70+ work patterns with context-aware matching to avoid false positives.</li>
     </ol>
-    137 new papers added, bringing the corpus to 247 papers.
+    139 new papers added, bringing the corpus to 249 papers.
   </li>
   <li><strong>Forward citation search</strong> — the 64 v1 papers were traced forward via OpenAlex to find 394 SF-relevant citing papers, cross-checked against the corpus for additional candidates.</li>
   <li><strong>Screening criteria</strong> — papers must engage with fictional humanoid/robot/AI characters in a technology-and-society framing; pure literary criticism, pure engineering, and non-English works (unless highly cited) are excluded.</li>
@@ -261,16 +261,16 @@
 <h2>Corpus at a Glance (v2.1)</h2>
 
 <div class="stat-grid">
-  <div class="stat-card"><span class="num">247</span><span class="label">Papers</span></div>
-  <div class="stat-card"><span class="num">423</span><span class="label">Characters</span></div>
-  <div class="stat-card"><span class="num">266</span><span class="label">Works</span></div>
+  <div class="stat-card"><span class="num">249</span><span class="label">Papers</span></div>
+  <div class="stat-card"><span class="num">424</span><span class="label">Characters</span></div>
+  <div class="stat-card"><span class="num">267</span><span class="label">Works</span></div>
   <div class="stat-card"><span class="num">45</span><span class="label">Anchor characters (&ge;5 papers)</span></div>
-  <div class="stat-card"><span class="num">4,891</span><span class="label">Character edges</span></div>
-  <div class="stat-card"><span class="num">4,472</span><span class="label">Work edges</span></div>
+  <div class="stat-card"><span class="num">4,901</span><span class="label">Character edges</span></div>
+  <div class="stat-card"><span class="num">4,482</span><span class="label">Work edges</span></div>
 </div>
 
 <p><strong>Corpus composition:</strong>
-  110 original papers (v1 + WoS expansion) + 137 OpenAlex systematic search (v2.1)
+  110 original papers (v1 + WoS expansion) + 139 OpenAlex systematic search &amp; backward citation analysis (v2.1)
 </p>
 
 <p><strong>Character valence:</strong>
@@ -435,14 +435,14 @@
   The underlying data lives in <code>literature_corpus_v2.xlsx</code> with four sheets:
 </p>
 <ul>
-  <li><strong>Literature</strong> — 247 papers with 22 columns (metadata, priority evaluations, character statistics, provenance)</li>
+  <li><strong>Literature</strong> — 249 papers with 22 columns (metadata, priority evaluations, character statistics, provenance)</li>
   <li><strong>WoS Search</strong> — documents the three Web of Science queries, filters, and LLM-aided selection protocol</li>
   <li><strong>Codebook</strong> — column-level documentation: name, data type, description, allowed values, and evaluation prompt for each field</li>
   <li><strong>Old Research Questions</strong> — the original 5-RQ framework (RQ1: impact types, RQ2: media/channels, RQ3: timelines/cycles, RQ4: ANT actors, RQ5: promising works) and the current research question</li>
 </ul>
 
 <div class="note">
-  <strong>Corpus Version 2.1</strong> — Built in three stages: (1) v1 frozen corpus of 64 papers from manual search; (2) v2.0 expansion via three Web of Science queries (369 records screened, 46 added); (3) v2.1 validation round via OpenAlex systematic search (1,461 records retrieved, 168 passed three-stage LLM screening at 12% selection rate, 137 with available PDFs added). The corpus now contains 247 papers yielding 423 unique characters and 266 unique works. A <a href="saturation.html">saturation analysis</a> confirms the corpus is not yet saturated.
+  <strong>Corpus Version 2.1</strong> — Built in three stages: (1) v1 frozen corpus of 64 papers from manual search; (2) v2.0 expansion via three Web of Science queries (369 records screened, 46 added); (3) v2.1 validation round via OpenAlex systematic search (1,461 records retrieved, 168 passed three-stage LLM screening at 12% selection rate, 137 with available PDFs added) plus 2 papers from backward citation gap analysis. The corpus now contains 249 papers yielding 424 unique characters and 267 unique works. A <a href="saturation.html">saturation analysis</a> confirms the corpus is not yet saturated.
 </div>
 
 <a class="back-link" href="interactive.html">&larr; Back to the network explorer</a>
