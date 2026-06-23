@@ -64,6 +64,46 @@ th{background:#f1f5f9;font-weight:600;font-size:12px;text-transform:uppercase;le
 <h2>v1 &rarr; v2.1 Expansion</h2>
 <p>The original corpus (110 papers) was expanded with 137 papers from OpenAlex systematic search, adding <strong>new characters and works</strong> not found in v1.</p>
 <div class="note"><strong>Interpretation:</strong> The corpus is not yet saturated. The last 20 papers contribute new characters at 2.0&times; the rate of the first 20, and new works at 1.0&times;. Q3 and Q4 together add 388 new characters and 211 new works. However, the <strong>core canonical figures are stable</strong> — the top 20 anchor characters have not changed since v1. The long tail of peripheral characters continues to grow, which is expected for an interdisciplinary corpus.</div>
+
+<h2>Backward Citation Coverage</h2>
+<p>
+  As a complementary validation, we extracted reference lists from 82 corpus papers (4,504 individual references)
+  and cross-matched them against the full 247-paper corpus. This tests whether the papers our corpus cites
+  are themselves included &mdash; a standard bibliometric completeness check.
+</p>
+
+<div class="stat-grid">
+  <div class="stat-card"><span class="num">78.1%</span><span class="label">Internal cross-citation</span></div>
+  <div class="stat-card"><span class="num">193</span><span class="label">Papers cited by &ge;1 other</span></div>
+  <div class="stat-card"><span class="num">70</span><span class="label">Cited by &ge;3 papers</span></div>
+  <div class="stat-card"><span class="num">8</span><span class="label">Genuine Tier-1 gaps</span></div>
+</div>
+
+<p>
+  <strong>78.1% of corpus papers</strong> (193&nbsp;/&nbsp;247) appear in at least one other corpus paper's reference list,
+  indicating strong internal cohesion. Only <strong>8 genuine academic gaps</strong> were found at the core topic level
+  (sci-fi&nbsp;+&nbsp;robots/AI&nbsp;+&nbsp;society), and none are foundational works. The top 2 gaps by citation count:
+</p>
+<table>
+  <tr><th>Paper</th><th>Cited by</th><th>Topic</th></tr>
+  <tr><td>Sartori &amp; Bocca (2023)</td><td>3 corpus papers</td><td>Public perceptions of AI and sociotechnical imaginaries</td></tr>
+  <tr><td>Cave et al. (2018)</td><td>2 corpus papers</td><td>Portrayals and perceptions of AI and why they matter</td></tr>
+</table>
+<p>
+  The remaining 6 gaps are each cited by only 1 paper, suggesting they are peripheral rather than core.
+  No foundational works (Jasanoff&nbsp;&amp;&nbsp;Kim&nbsp;2015, Borup et&nbsp;al.&nbsp;2006, etc.) are missing.
+  Most unmatched in-scope references are primary sources (novels, films), blog posts, or news articles &mdash;
+  not academic papers that belong in the corpus.
+</p>
+
+<h2>Three-Angle Validation Summary</h2>
+<table>
+  <tr><th>Method</th><th>Status</th><th>Finding</th></tr>
+  <tr><td><strong>Forward citation</strong></td><td style="color:#27ae60">&#10003; Covered</td><td>394 SF-relevant citing papers traced from 64 v1 seed papers</td></tr>
+  <tr><td><strong>Backward citation</strong></td><td style="color:#27ae60">&#10003; Strong</td><td>78% internal cross-citation; only 8 genuine gaps, none foundational</td></tr>
+  <tr><td><strong>Saturation curves</strong></td><td style="color:#e67e22">&#9679; Not flat</td><td>Character ratio 1.96, work ratio 1.03; core characters stable, long tail growing</td></tr>
+</table>
+
 <a class="back-link" href="interactive.html">&larr; Back to the network explorer</a>
 </div>
 <script>
